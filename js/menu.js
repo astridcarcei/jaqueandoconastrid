@@ -46,27 +46,33 @@
 //La funcion envia un alert al enviar el formulario
 //Se hace referencia en todos los archivos.html de la pagina
 //Constantes
-const footForm = document.querySelector(`.Footer-form`)
-    const envioSub = () => {
-//Funcion que captura el evento submit y envia un alert y resetea el formulario
-      footForm.addEventListener(`submit`, (event) => {
-            event.preventDefault()
-            alert("Gracias por Suscribirse!!!")
-            footForm.reset()
-            return false
+document.addEventListener(`DOMContentLoaded`, () => {
+    // Constantes
+    const footForm = document.querySelector(`.Footer-form`)
+    if (footForm) {
+      const envioSub = () => {
+        // Funcion que captura el evento submit y envia un alert y resetea el formulario
+        footForm.addEventListener(`submit`, (event) => {
+          event.preventDefault()
+          alert("Gracias por Suscribirse!!!")
+          footForm.reset()
+          return false
         })
+      }
+      envioSub()
     }
-    envioSub()
 
-const contactForm = document.querySelector(`.Contacto-form`)
-    //Funcion que captura el evento submit, envia un alert y resetea el formulario
-    
-        const envioComentario = () => {
-            contactForm.addEventListener(`submit`, (event) => {
-                event.preventDefault()
-                alert("Gracias por tu comentario!!!")
-                contactForm.reset()
-                return 
-            })
-        }
-        envioComentario()
+    const contactForm = document.querySelector(`.Contacto-form`)
+    if (contactForm) {
+      // Funcion que captura el evento submit, envia un alert y resetea el formulario
+      const envioComentario = () => {
+        contactForm.addEventListener(`submit`, (event) => {
+          event.preventDefault()
+          alert("Gracias por tu comentario!!!")
+          contactForm.reset()
+          return 
+        })
+      }
+      envioComentario()
+    }
+  })()
