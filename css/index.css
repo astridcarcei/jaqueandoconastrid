@@ -1781,14 +1781,16 @@ Estructura :
 
 @media(max-width:500px){
     .Header{
-        padding: 0 ;
+        margin:auto ;
+        
     }
     .Header-boton{
-        right: 0;
+        right: 1;
     }
     .Header-ul.is-active{
-        transform: translateX(50%);}
+        transform: translateX(10%);}
     .Footer{
+        margin: auto;
             width: 100%;
     }
 }
