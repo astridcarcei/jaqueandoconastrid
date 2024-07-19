@@ -59,7 +59,7 @@
      <!-- El menú de navegación integra un botón, que se mantendra oculto hasta cambiar de resolucion de pantalla. -->
     
     <nav class="Header-nav">
-        <button class="Header-boton">
+        <button class="Header-boton" title="Abrir Menu">
             <span class="Header-span"></span>
             <span class="Header-span"></span>
             <span class="Header-span"></span>
@@ -239,8 +239,9 @@
       <section class="Footer-section Footer-subscribe">
         <h4 class="Footer-h">Suscríbete</h4>
         <form class="Footer-form">
-          <input type="email" placeholder="Tu correo electrónico" class="Footer-input">
-          <button type="submit" class="Footer-button">Suscribirse</button>
+            <label for="correo" class="Footer-label">Correo:</label>
+            <input type="email" name="correo" id="correo" placeholder="Tu correo electrónico" class="Footer-input">
+            <button type="submit" class="Footer-button" title="Suscribete">Suscribirse</button>
         </form>
       </section>
     </div>

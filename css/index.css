@@ -1719,10 +1719,12 @@ Estructura :
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     gap: 1.25rem;
   }
-  
+  .Footer-label{
+    text-align: left;
+  }
   .Footer-input {
     width: 100%;  
     padding: .625rem;  
