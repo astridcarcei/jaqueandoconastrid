@@ -1781,6 +1781,7 @@ Estructura :
 
 @media(max-width:500px){
     .Header{
+	background-color: var(--color-bg-main);
         margin:auto ;
         
     }
