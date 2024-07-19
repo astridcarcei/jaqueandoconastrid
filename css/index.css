@@ -1,0 +1,1792 @@
+@charset "UTF-8";
+/* Index CSS 
+ - Reset CSS / Normalizador
+ - Variables
+ - Global
+ - Header
+ - Main
+ - Sections
+ - Footer  
+*/
+
+/* -------Reset CSS / Normalizador------ */
+/* Descripción: Restablece de los estilos predeterminados para lograr coherencia en los navegadores.
+Estructura:
+    - General para todos los elementos
+    - li: restablece el estilo general de las listas
+    - html: ajustes de html
+    - Reset de images
+*/
+*{
+    margin:0;
+    padding: 0;
+    border: 0;
+    box-sizing:border-box;
+}
+li{
+    list-style: none;
+}
+html{
+    scroll-behavior: smooth;
+}
+/* Se resetea el elemento a para funcionar como block*/
+a{
+    display: block;
+    text-decoration: none;
+}
+/* Las etiquetas a que se encuentran en parrafo se comportan como inline */
+p a {
+    display: inline;
+}
+img , svg{
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: initial;
+}
+/* Reset de estilo de los SVG */
+svg {
+    width: 100%;
+    display: block;
+    fill: currentColor;
+  }
+h1 , h2 , h3 , h4 , h5 , h6 , p , strong , em , mark , a{
+    font-size: 1em;
+    font-style: inherit;
+    font-weight: inherit;
+    color:inherit;
+    text-decoration: none;
+    background-color: inherit;
+}
+form , input , textarea , select , label, button {
+	display: block ;
+	font-family: inherit;
+	font-size: inherit;
+	background-color: transparent;
+	appearance:none;
+    cursor: pointer;
+}
+/* Se evitan problemas con los pseudoelementos de quotes */
+blockquote:before, blockquote:after, q:before, q:after {
+    content: "";
+    content: none;
+  }
+
+/* -------Fonts------ */
+/* Descripción: Declaración de las fuentes a utilizar .
+Estructura:
+    - Font-face Tipografía Para titulo
+    - Font-face Típografía para cuerpo de texto
+*/
+/* Tipografia Para titulos  */
+@font-face {
+    font-display: swap;
+    font-family: 'Abril Fatface';
+    src: url('../fonts/AbrilFatface-Regular.ttf') format('truetype');
+}
+/* Tipografia para cuerpo de texto */
+@font-face {
+    font-display: swap;
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway/Raleway-VariableFont_wght.ttf') format('truetype');
+}
+
+input:focus{
+    outline: .0625rem solid var(--color-accent-principal);
+	outline-color: var(--color-accent-pink);
+} 
+
+
+/* Aquí se definen las Custom properties */
+:root{
+    /* Colores */
+    --color-bg-main: #F8F3E6; /*Color de fondo principal*/
+    --color-bg-alt: #ffffff; /*Color de fondo alterno*/
+    --color-bg-secondary: #E0E0E0; /*Color de fondo segundario*/
+    --color-text-main: #000000; /*Color de texto principal*/
+    --color-text-secondary: #333333; /*Color de texto segundario*/
+    --color-text-tertiary: #ffffff; /*Color de texto tercero*/
+    --color-accent-pink: #C48693; /*Color de acento principal*/
+    --color-accent-principal: #31010c; /*Color de acento principal*/
+    --color-accent-cream: #FFFDD0; /*Color de acento tercero */
+    --color-accent-sage: #A8D5BA; /*Color de acento cuarto*/
+  
+    /* Tipografía */
+    --font-main: 'Raleway'; /*Tipografía principal */
+    --font-title: 'Abril Fatface';/*Tipografía titulos */
+
+    /* Tamaño Tipografía */
+    --font-size--titulos-h1: 2.5em;
+    --font-size--titulos-h2: 2em;
+    --font-size--titulos-h3: 1.5em;
+    --font-size--titulos-h4: 1.25em;
+    --font-size--titulos-h5: 1em;
+    --font-size-cuerpo: .875em;
+    
+}
+
+/* Estilos globales para el body y elementos de la página */
+body{
+    /* Se encuentran definidas propiedades que se REPITEN a lo largo de la web
+    */
+    min-height: 100vh;
+    font-size: 100%;
+    font-family: var(--font-main);
+    color: var(--color-text-main);
+    letter-spacing: .0625rem;
+    background-color: var(--color-bg-main); 
+    margin: auto;
+}
+/* ------Header------ */
+/* Descripción: Estilos para la galeria de imagenes en el inicio de la página 
+Estructura : 
+    - Header: Define el display y la estructura de la cabecera su position sticky y z-index 2 para mantenerse en la parte superior de la página
+    - Header-h1: con sub elementos a e img para el logo
+    - Header-nav: Sub elementos ul, li y a para la navegación animacion de barra con pseudo-elemento
+    - Header-logo: estilo de logo de redireccion a pagina inicio
+    - Header-img: estilo imagen de logo de inicio
+    - Header-ul: estilo de la lista no ordenada
+    - Header-li: estilo del contenido de la lista del menu
+    - Header-a: estilo de los campos de la lista menus
+    - Header-span: Contenedor de la información
+    - Header-boton: Trabajando con pseudo-clase para la animación del boton de menú
+*/
+
+.Header{
+    width: 100%;
+    max-width: 100vw;
+    background-color: var(--color-bg-alt);
+    padding: 0 6rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: end; 
+    position: relative; 
+  
+}
+.Header-h1{
+    width: 20%;
+}
+.Header-logo{
+    width: 12.5rem;
+    height: 8.75rem;    
+}
+.Header-svg{
+    width: 100%;
+    height: 100%;
+}
+.Header-nav{
+     width: 70%;  
+}
+.Header-ul{
+    width: 100%;
+    padding: 1rem;
+    border-radius: 3%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+    align-items: center;
+    gap: .9375rem;    
+}
+/* Position relative para el efecto de la barra de navegación */
+.Header-li{ 
+    position: relative;   
+}
+
+.Header-a{
+    font-family: var(--font-main);  
+    font-size: 1.20em;
+    font-weight: 500;
+    color: var(--color-accent-principal);
+    letter-spacing: var(--letter-spacing);  
+    transition: opacity .5s ease, transform .5s ease;
+}
+/* Header-a ya tiene su hover en el pseudo-elemento */
+
+.Header-a:active{
+    opacity: .8;
+    transform: scale(.9);
+}
+/* Uso de pseudo-elemento para la animación de la barra de navegación */
+.Header-a::after{
+    content: " ";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: .125rem;
+    background: var(--color-accent-principal);
+    transform-origin:right;
+    transform: scaleX(0);
+    transition: transform 0.2s ease-in-out;
+}
+.Header-a:hover::after{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+/* Header-boton es el contenedor del boton de menú  con pseudo-clase*/
+
+.Header-boton{ 
+    width: 2rem;
+    height: 2rem;
+    border: 0;
+    
+    display: flex;
+    flex-direction: column;
+    gap: .375rem;   
+    opacity: 0;
+    pointer-events: none;
+    
+    position: absolute;
+    top: calc(60% - 1rem);
+    right: 2rem;
+    
+}
+
+/* Header-boton usa un span y pseudo-clase para cada barra de la animación y se define la clase is-active para cambiar su visualización */
+.Header-span{
+    background:var(--color-accent-principal);
+    width: 100%;
+    height: .125rem;
+    border-radius:.3125rem;
+    transition: transform .7s ease, background-color .5s ease;
+    transform-origin: left;
+}
+.Header-boton.is-active span:first-child {
+    transform: rotate(30deg);  
+}
+
+.Header-boton.is-active span:nth-child(2) {
+    opacity: 0;
+}
+.Header-boton.is-active span:last-child {
+    transform: rotate(-30deg);   
+}
+
+/*Ajuste de propiedades de la cabecera de la página para su correcta visualizacion en diferentes resoluciones de pantalla*/
+@media(max-width:1000px){
+    .Header {
+        padding: 0rem 2rem;
+        flex-wrap: wrap;
+    }
+    .Header-boton{
+        opacity: 1;
+        pointer-events: auto;
+        transition: transform .5s ease, opacity .3s ease;
+    }.Header-boton:hover{
+        transform: scaleX(1.1);
+    }
+    .Header-boton:active{
+        opacity: .7;
+        transform: scaleX(.9);
+    }
+    .Header-ul{
+        width: 60vw;
+        height: 45vh;
+        background-color: var(--color-accent-principal);
+        padding: 3rem 2rem;
+        z-index: 2;
+        position: absolute;
+        top: 100%;
+        right: 0;
+       
+        flex-direction: column;
+      
+        align-items: start;
+        
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(50%);
+        transition: transform .5s ease-in-out , opacity .5s ease-in-out;
+    }
+    .Header-ul.is-active{
+        transform: translateX(42%);
+        opacity: 1;
+        pointer-events: auto;
+        }
+    .Header-a{
+        color: var( --color-text-tertiary);
+    }
+    .Header-a::after{
+        background-color: var(--color-accent-cream) ;
+    }
+}
+
+/* -------Header------ */
+
+/* -------Inicio------ */
+/* Descripción: Estilos para la galeria de imagenes en el inicio de la página 
+Estructura : 
+    - Inicio: Estilo para el titulo principal del blog
+    - Inicio-header: Contenedor para titulo sector inicial
+    - Inicio-h2: Estilos de tipografia para el titulo de la página
+    - Inicio-article: Contenedor de bienvenida
+    - Inicio-h3: Tipografica para titulo de bienvenida
+    - Inicio-p: Tipografica para mensaje de bienvenida
+    - Inicio-parallax: Background-image y propiedades de position para efecto parallax
+    - Section-a: Estilos para enlace  a la sección "about me"
+*/
+
+
+.Inicio { 
+    width: 100%;
+    min-height: 100vh;
+    padding: 1rem 2rem;
+    color: var(--color-accent-cream); 
+    position: relative;
+}
+.Inicio-header{
+    width: 100%;
+    max-width: 37.5rem;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+.Inicio-h2 { 
+    font-family: var(--font-title);
+    font-size: var(--font-size--titulos-h2);
+    letter-spacing: .0938rem;
+    font-weight: 500;   
+}
+
+
+.Inicio-article{
+    width: 100%;
+    width: 30rem;
+   
+    background: linear-gradient(130deg, #191919, #ff9524);
+    padding: 1rem 2rem;
+    border-radius: .625rem;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: .5rem;
+    opacity: .8;
+    box-shadow: inset 0 -3em 3em var(--color-text-secondary),
+    0.3em 0.3em 1em var(--color-text-main);
+    animation: mover 1s ease-in .1s ;
+}
+.Inicio-h3 {
+    width: 100%; 
+    font-family: var(--font-main);
+    font-size: var(--font-size--titulos-h3);
+    font-weight: 500;
+    text-align: center;
+}
+.Inicio-p{
+    width: 100%;
+    font-size: var(--font-size-cuerpo);
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    color: inherit;
+}
+.Section-a{
+    width: 9.375rem;
+    background-color: var(--color-accent-principal);
+    margin: .3125rem 0 0 0;
+    padding:.625rem .9375rem;
+    border: .0625rem solid var(--color-accent-principal);
+    border-radius: .9375rem;
+    color: var(--color-accent-cream);
+    font-size: inherit;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color .4s ease, color .4s ease, transform .3s ease ;
+ }
+.Section-a:hover{
+    background-color: var(--color-accent-cream);
+    color: var(--color-accent-principal);
+      }
+.Section-a:active{
+    transform:scaleX(1.1); 
+}
+/* -------Parallax------ */
+/* Imagen de fondo con background-attachment:fixed para efecto parallax al bajar la página */
+.Inicio-parallax{
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/background.jpg); 
+    background-size: cover;
+    background-attachment:fixed;
+    background-position: center; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+/* Ajustes con mediaquerys en pantallas pequeñas  */
+@media(max-width:800px){
+
+    .Inicio-article{
+        width: 80%;
+        padding: 1rem;
+        transform: rotate(0deg) translateX(0%);
+    }
+    .Inicio-parallax{
+        background-attachment:local;
+    
+    }
+}
+
+/* -------Parallax------ */
+
+/* -------Animacion------ */
+/* Descripción: Estilos para la animación de las imagenes en la página principal 
+Estructura : 
+    -Animation: Seccion
+    - Animation-h3: Titulo de la animacion Estilar Tipografia y agregar animación
+    - Animation-img: SVG de la animacion
+    - @keyframes: Se define la animación del svg
+ 
+*/
+
+.Animation{
+    width: 100%;
+    height: 15rem;  
+    
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+    overflow: hidden;
+    
+}
+
+/* Cree tres animaciones que interacturan entre sí, una de traslación, otra de salto y una de rotación y escala lo realice
+separado para otorgarle propiedades de tiempo diferente y que se vea de manera más natural */
+
+.Animation-svg {
+    animation: translate 5s ease-in-out infinite, jump 3s ease-in-out infinite alternate, rotate-scale 2s linear infinite;
+}
+
+
+@keyframes translate {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-0.625rem);
+    }
+    
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-1.25rem);
+    }
+}
+
+@keyframes rotate-scale {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+
+
+/* -------Animacion------ */
+/* -------AboutChess------ */
+ /* Descripción: Estilos para la sección AboutChess en la página principal
+Estructura : 
+    - AboutChess: Contenedor y display del elemento hijo
+    - AboutChess-container: Contenedor principal de la sección
+    - AboutChess-title: Titulo de la sección
+    - AboutChess-description: Descripción de la sección estilos de texto */
+
+.AboutChess {
+    width: 100%;
+    background-color: var(--color-bg-alt);
+    margin: 2.5rem 0;
+    padding: 2.5rem 1.25rem;
+    text-align: center;
+    border-radius: 2%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .AboutChess-container {
+    width: 100%;
+    max-width: 50rem;
+    margin: 0 auto;
+  }
+
+  .AboutChess-title {
+    font-size: var(--font-size--titulos-h3);
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--color-text-secondary);
+  }
+
+  .AboutChess-description {
+    font-size: var(--font-family-cuerpo);
+    font-weight: 400;
+    margin-bottom: 1.25rem;
+    color: var(--color-text-secondary);
+  }
+/* -------AboutChess------ */
+
+
+/* -------Destacados------ */
+/* Descripción: Estilos para la sección de articulos destacados en la página principal 
+Estructura : 
+    - Destacados: Seccion 
+    - Destacados-slider:Contenedor de del slider de artículos se estila tamaño y posición relative para las flechas de dirección 
+    - Destacados-container: Contenedor para presentacion de los artículos se indica la dimension total para los 4 articles
+    - Destacados-arrow: Se estila su position con la clase general Destacados-arrow
+    - Destacados-arrow--prev: Se indica su posición a la izquierda
+    - Destacados-arrow--next: Se indica su position a la derecha
+    - Destacados-ul: Estilo para contendor de lista 
+    -Destacados-btn: Botones de navegación en una lista desordenada , se estila su disposicion, color etc
+*/
+
+
+.Destacados{
+    width: 100%;
+    margin: 1rem 0 4rem ;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+   
+}
+
+.Destacados-slider{
+    width: 25rem;
+    padding: 0 0 1rem;
+    background-color: var( --color-text-tertiary);
+    margin: auto;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0,0,0,.5);
+    position: relative;
+    overflow: hidden;
+}
+.Destacados-h4 {
+    width: 100%;
+    font-family: var(--font-main);
+    font-size: var(--font-size--titulos-h4);
+    font-weight: 600;
+    color: var(--color-text-main);
+    text-align: center;
+    letter-spacing: .0938rem;
+    padding: 1rem;
+}
+.Destacados-p{
+    width: 100%;
+    font-family: var(--font-main);
+    font-size: var(--font-size-cuerpo);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+@media(max-width:500px){
+    .Destacados-slider{
+        width: 100%;
+    }
+}
+.Destacados-container{
+    width: 400%;
+    
+   
+    border-radius: 1rem;
+    
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    
+    transition: transform 1s ease;
+}
+.Article-item--Destacados{
+    width: 100%;
+   
+}
+
+.Destacados-arrow{
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: calc(40% - 1.5rem); 
+}
+.Destacados-svg{
+    width: 100%;
+    height: 100%;
+    opacity: .6;
+    transition: all .5s ease-in-out;
+}
+.Destacados-arrow:hover .Galeria-svg{
+    opacity: 1;
+}
+
+/* Sub-clase de .Slider-arrow conserva sus propiedades  */
+.Destacados-arrow--next{
+    right: 0;    
+}
+.Destacados-arrow--prev{
+   left: 0;
+}
+.Destacados-ul{
+    width: 100%;
+    padding: 1rem 0 0 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.Destacados-btn{
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--color-accent-principal);
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: .6;
+    transition: opacity .5s ease;
+}
+.Destacados-btn:hover{
+    background-color: var(--color-accent-principal);
+    opacity: 1;
+
+}
+
+/* -------Destacados------ */
+
+
+
+/* -------About------ */
+/* Descripción: Estilos para la seccion de about  
+Estructura : 
+    - About: seccion de about me 
+    - About-title: estilo de seccion del about me
+    - About-container: contendor principal con la informacion del about me
+    - About-wrapper: formateo para carta de presentacion
+    - About-persona: contendor de carta de presentacion
+    - About-foto: estilos para la foto 
+    - About-img: contendor para la foto del about me
+    - About-h3: tipografia de titulos de presentacion
+    - About-p: tipografia y estilo de parrafo inicial
+    - About-redes: contendor de links de referencias a redes sociales
+    - About-h4: estilo para el titulo referente a redes sociales
+    - Redes-h4: tipografia para link de redes sociales
+    - About-bio: contenedor biografico
+    - About-h3--rosa: titulo con formato y estilo con color
+    - About-p--rosa: presentacion de biografia con estilo y color
+    - About-article: contendor de presentacion y lista de servicios
+    - About-resumen: tipografia de parrafo de resumen
+*/
+
+.About{
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto 4rem; 
+    padding: 1rem 2rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+    gap: 2rem;
+}
+.About-title{
+    width: 100%;
+    padding: 0 0 1rem; 
+    font-family: var(--font-title);
+    font-size: var(--font-size--titulos-h2);
+    font-weight: 600;
+    letter-spacing: .0938rem;
+    text-align: center;
+    color: var(--color-accent-principal);
+}
+
+.About-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.About-wrapper{
+    width: 100%;
+    padding: 3rem;
+    background-color: var(--color-accent-principal);
+    color: var(--color-accent-cream);
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: start;
+    gap: 5rem;
+}
+.About-persona{
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: start;
+    gap: .5rem;
+}
+.About-foto{
+    width: 100%;
+    height: 300px;
+    border-radius: 2%;
+    order: -1; 
+}
+.About-img{
+    width: 100%;
+    height: 100%;
+   
+    
+}
+
+.About-h3{
+    width: 100%; 
+    font-family: var(--font-main);
+    font-size: var(--font-size--titulos-h3);
+    font-weight: 600;
+    color: var(--color-bg-alt);
+ }
+.About-p{
+    width: 100%;
+    font-family: var(--font-main) ;
+    font-size: var(--font-size-cuerpo);
+    font-weight: 500;
+    position: relative;
+}
+.About-p::after{
+    content: " ";
+    position: absolute;
+    right: 0;
+    bottom: -100%;
+    left: 0;
+    height: .125rem;
+    background: var(--color-accent-cream);   
+}
+
+
+.About-redes{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: end;
+    gap: .5rem;
+}
+.Redes-h4{
+    font-family: var(--font-main);
+    font-size: var(--font-size--titulos-h4);
+    font-weight: 500;
+    color: var(--color-bg-alt);
+}
+
+/* Segunda parte about-bio */
+
+.About-bio{
+    width: 100%;
+    padding: 3rem;
+    background-color: var(--color-accent-cream);
+    
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: end;
+    gap: 10px;
+}
+.About-h3--rosa{
+    color: var(--color-accent-principal);
+}
+.About-p--rosa{
+    color: var(--color-accent-principal);
+}
+.About-p--rosa::after{
+    bottom: -9%;
+    background: var(--color-accent-principal);   
+}
+.About-article{
+    width: 100%;
+    padding: 1rem 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+}
+.About-h4{
+    width: 100%;
+    font-family: var(--font-main);
+    font-size: var(--font-size--titulos-h4);
+    font-weight: 700;
+    color: var(--color-accent-principal);
+}
+.About-resumen{
+    width: 100%;
+    font-family: var(--font-main);
+    font-size: var(--font-size-cuerpo);
+    font-weight: 500;
+    color: var(--color-accent-principal);
+}
+
+.About-article:not(:nth-child(5)){
+    border-bottom: .125rem solid var(--color-accent-principal);
+}
+  
+
+/* Los enlaces se definen con la clase Section-a  Section-a--about es una subclase para cambiar ciertos elementos
+del estilo */
+.Section-a--about{
+    width: 100%;
+    max-width: 12.5rem;
+    color: var(--color-bg-main);
+}
+
+
+/* -------About------ */
+
+/* -------Articles------ */
+/* Descripción: Estilos para la seccion de artículos del blog, se uso display-grid para facilitar
+la division y disposicion de los Articles-item y su ajuste a responsive*/
+/* Estructura : 
+    - Articles: Seccion 
+    - Articles-title: Titulo de la sección
+    - Articles-category: section contenedor del ul y los botones
+    - Articles-h3: Titulo de la section categoria
+    - Articles-ul: Contenedor de los botones
+    - Articles-li: items de la lista (se estila el button)
+    - Articles-button: Botones con el evento tabs de filtro
+    - Articles-wrapper: Contenedor de los articulos
+    - Articles-item: Contenedor de los articulos
+    - Articles-h4: Titulo del articulo
+    - Articles-p: Parrafo del articulo
+    - Articles-img: Imagenes del articulo (Se da un orden para que se vea primero la imagen y luego la información)
+    - Articles-span: Contenedor de la información del articulo tipo de articulo y fecha
+    - Articles-info: Información adicional
+    - Articles-autor: Contenedor del nombre de autor e imagen
+    - Articles-foto: Foto del autor del articulo
+    - Articles-footer: Contenedor con el enlace al articulo completo
+    - Articles-link: Enlace al artículo completo
+    - Articles-intro: tipografia para presentacion 
+    - Articles-shadow: estilos para parrafo de presentacion
+*/
+
+.Articles{
+    width: 100%;
+    max-width: 75rem;
+    margin: 0 auto 4rem ; 
+    padding: 2rem;
+}
+.Articles-title{
+    width: 100%;
+    font-family: var(--font-title);
+    font-size:var(--font-size--titulos-h2);
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: .0938rem;
+    color: var(--color-text-main);
+    
+}
+.Articles-category{
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    /* border-bottom: .3125rem solid var(--color-accent-principal); */
+}
+.Articles-h3{
+    width: 100%;
+    font-family: var(--font-main);
+    font-size : var(--font-size--titulos-h3);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+.Articles-ul{
+    width: 100%;
+    margin: 1rem auto;
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9.375rem, 1fr));
+    
+}
+.Articles-li{
+  width: 100%;
+}
+
+.Articles-button {
+    width: 100%;
+    padding: .625rem 1.25rem;
+    border: .0625rem solid var(--color-bg-main);
+    background-color: var(--color-accent-principal);
+    
+    font-family: var(--font-main);
+    font-size: var(--font-size-cuerpo);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--color-accent-cream);
+    cursor: pointer;
+    transition: background-color .5s ease-in, color .7s ease-in-out;
+}
+.Articles-li:hover .Articles-button{
+    border: .0625rem solid var(--color-accent-principal);
+    background-color: var(--color-bg-alt);
+    color: var(--color-accent-principal);  
+}
+
+.Articles-wrapper{
+    width: 100%;
+    margin: 1rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+    gap: 1rem;
+}
+
+.Article-item{
+    width: 100%;
+    padding: 1rem ;
+    border-radius: 5%;
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: start;
+    gap: 1rem;
+    box-shadow: inset 0 -.1rem .5rem var(--color-accent-principal),
+    0 0  0 .110rem var(--color-bg-alt),
+    0.2rem 0.2rem .1rem var(--color-text-secondary);
+}
+.Article-item.is-hiden{
+    display: none;
+}
+
+.Articles-h4{
+    width: 100%; 
+    font-family: var(--font-main);
+    font-size: var(--font-size--titulos-h4);
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+.Articles-p{
+    width: 100%;
+    font-family: var(--font-main) ;
+    font-size: var(--font-size-cuerpo);
+    font-weight: 400;
+    color: var(--color-text-secondary);
+}
+.Articles-img{
+    width: 100%;
+    height: 13rem;
+    object-fit: cover;
+    order: -2; 
+}
+
+.Articles-span{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: start;
+    gap: 3rem;
+    order: -1;
+}
+.Articles-info{
+    width: 100%;
+    font-family: var(--font-main);
+    font-size: .8em;
+    font-weight: 300;
+    color: var(--color-text-secondary);
+}
+.Articles-autor{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+    align-items: center;
+    gap: .5rem;
+}
+.Articles-foto{
+    width: 3rem;
+    height: 3rem;
+    background-color: #000000;
+    border-radius: 50%;
+}
+.Articles-footer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+}
+.Articles-link{
+    width: 100%;
+    max-width: 120px;
+    background-color: var(--color-accent-sage);
+    padding:.625rem .9375rem;
+    border-radius: .9375rem;
+    font-size: inherit;
+    font-weight: bold;
+    text-align: end;
+    color: var(--color-text-secondary);
+}
+@media(max-width:800px)
+{
+    .Articles-category{
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .Articles-ul{
+        gap: .2rem;
+    }
+}
+
+/* -------Articles------ */
+
+/* -------Post------ */
+/* Descripción: Estilos para la pagina de los artículos del blog
+Estructura : 
+    - Post: Estilo general del artículo y su display 
+    - Post-Header: Contenedor de la cabecera del post
+    - Post-title: Titulo del post Propiedades de tipografía
+    - Post-section: Contenedor de las secciones del post propiedades de tipografía y display
+    - Post-h3: tipografia de titulos de secciones 
+    - Post-p: tipografia y estilo de parrafo inicial
+    - Post-img: Imagen de seccion propiedades de imagen y disposicion 
+    - Post-h4: Titulo de seccion secundaria propiedades de tipografía
+    - Post-ul: contenedor de lista desordenada en el post
+    - Post-li: items de la lista del post
+    - Post-footer: Contenedor de informacion adicional propiedades display de los elementos hijos
+    - Post-foto: Propiedades de la foto del autor
+    - Post-span: Propiedades de típografia 
+*/
+
+.Post{
+    width: 100%;
+    max-width: fit-content;
+    margin: 2rem auto; 
+    padding: 1rem 4rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    gap: 1rem; 
+}
+.Post-Header{
+    width: 100%;
+    max-width: 37.5rem;
+    flex-wrap: wrap;
+}
+.Post-title{
+    width: 100%;
+    font-family: var(--font-title);
+    font-size: var(--font-size--titulos-h2);
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: .0938rem;
+    color: var(--color-accent-principal);
+}
+/* Estilos para la imagen principal del post o banner */
+.Post-picture{
+    width: 100%;
+    height: 20rem;
+}
+.Post-image{ 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+
+.Post-section{
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+.Post-h3{
+    width: 100%;
+    margin: 0 0 1rem;
+    font-family: var(--font-main);
+    font-size: var(--font-size--titulos-h3);
+    font-weight: 500;
+    text-align: center;
+    text-decoration:underline;
+    color: var(--color-accent-principal);
+}
+.Post-p{
+    width: 100%;
+    max-width: 1200px;
+    font-family: var(--font-main) ;
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: var(--color-text-main);
+}
+.Post-img{
+    width: 100%;
+    height: 12.5rem;
+    object-fit: contain; 
+    border-radius: 5%;
+}
+.Post-h4 {
+    width: 100%;
+    font-family: var(--font-main);
+    font-size: var(--font-size--titulos-h4);
+    font-weight: 600;
+    color: var(--color-accent-principal);
+}
+.Post-ul{
+    padding: 1rem;
+}
+.Post-li{
+    list-style:disc;
+}
+.Post-footer{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    gap: .3125rem;
+}
+.Comment-section{
+    width: 100%;
+    max-width: 14rem;
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+}
+.Comment-form{
+    width: 100%;  
+}
+.Comment-button{
+    width: 100%;
+    max-width: 12.5rem;
+    background-color: var(--color-accent-principal);
+    padding:.625rem .9375rem;
+    border-radius: .9375rem;
+    font-size: inherit;
+    font-weight: bold;
+    text-align: center;
+    color: var(--color-accent-cream);
+    cursor: pointer;
+    transition: background-color .5s ease-in, color .7s ease-in-out;
+}
+.Comment-button:hover{
+    background-color: var(--color-bg-alt);
+    color: var(--color-accent-principal);
+}
+.Comment-button:active{
+    transform:scaleX(1.1);
+}
+.Post-aside{
+    width: 100%;
+    margin: 4rem auto;
+    max-width: 62.5rem;
+}
+.Post-sugerido{
+    width: 100%;
+    display:flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+}
+.Post-h3--center{
+    text-align: center;
+}
+.Post-wrapper{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+    gap: 1rem;
+}
+.Post-foto{
+    width: 15rem;
+    height: 10rem;
+    border-radius: 50%;
+} 
+
+/* -------Post------ */
+
+/* -------Lection------ */
+/* Descripción: Estilos para la seccion de lecciones del blog*/
+/* Estructura : 
+    - Lection: seccion para pagina de lecciones
+    - Lection-title: tipografia del Titulo de la leccion
+    - Lection-description: Header contenedor / titulo y descripción 
+    - Lection-h3: tipografia de titulo de la seccion
+    - Lection-p: tipografica y estilo de parrafos 
+    - Acordeon: contenedor para el contenedor de acordeon
+    - Acordeon-section: Contenedor del acordeon por leccion
+    - Acordeon-h4: titulo de leccion Se estila la típografia en el button para abrir el acordeon
+    - Acordeon-button: Boton para abrir y cerrar el acordeon
+    - Acordeon-icon: icono de flecha  se define en position absolute y se rota con la clase is-active en 
+    - Acordeon-article: seccion de titulo de topico del acordeon
+    - Acordeon-h5: titulo del topico del acordeon
+    - Acordeon-h6: sub titulo del topico del acordeon
+    - Acordeon-p: parrafo descriptivo del topico
+    - Acordeon-ul: contendor de la lista para el acordeon
+    - Acordeon-li: tipografia para campos de la lista del acordeon
+    - Acordeon-img: contenedor para la imagen del acordeon
+    - Acordeon-imagen: estilos de la imagen del acordeon
+*/
+.Lection{
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+}
+
+.Lection-title{
+    width: 100%;
+    padding: 0 0 1rem; 
+    font-family: var(--font-title);
+    font-size: var(--font-size--titulos-h2);
+    font-weight: 600;
+    letter-spacing: .0938rem;
+    text-align: center;
+    color: var(--color-accent-principal); 
+}
+
+.Lection-description{
+    width: 100%; 
+    padding: 1rem; 
+}
+.Lection-h3{
+    width: 100%; 
+    margin: .5rem auto;
+    font-family: var(--font-main);
+    font-size: var(--font-size--titulos-h3);
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+.Lection-p{
+    width: 100%;
+    max-width: 1000px;
+    font-family: var(--font-main) ;
+    font-size: var(--font-size-cuerpo);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+.Acordeon{
+    width: 100%;
+    max-width: 120rem;
+}
+.Acordeon-section{
+    margin: 0 0 1rem;
+}
+.Acordeon-h4{
+    width: 100%;
+    position:relative;
+    
+}
+.Acordeon-icon{
+    color: var(--color-text-tertiary);
+    position: absolute;
+    top: 35%;
+    right: 5%;
+    pointer-events: none;
+    transition: transform .3s ease;
+}
+.Acordeon-section.is-active .Acordeon-icon{
+    transform: rotate(180deg);
+}
+.Acordeon-button{
+    width: 100%;
+    background-color: var(--color-accent-principal);
+    padding: .5em;
+    font-family: var(--font-main);
+    font-size: var(--font-size--titulos-h4);
+    color: var( --color-text-tertiary);   
+    font-weight: 600;   
+}
+.Acordeon-article{
+    width: 100%;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: all .5s ease;
+}
+
+/* Se define el cambio con una subclase modificadora que js add en el elemento Acordeon-section y cuando este is-active 
+.Acordeon-article cambia su altura y padding    */
+
+.Acordeon-section.is-active .Acordeon-article{
+    height: auto;
+    padding: 1rem;
+    
+} 
+
+.Acordeon-h4{
+    margin: 0 0 .3125rem;
+    font-family: var(--font-main);
+    font-size: var(--font-size--titulos-h4);
+    font-weight: 500;
+    color: var(--color-text-main);
+}
+.Acordeon-h5{
+    margin: 0 0 .3125rem;
+    font-family: var(--font-main);
+    font-size: var(--font-size--titulos-h5);
+    font-weight: bold;
+    color: var(--color-text-main);
+}
+.Acordeon-h6{
+    margin:0 0 .3125rem;
+    font-family: var(--font-main);
+    font-size: var(--font-size--titulos-h6);
+    font-weight: bold;
+    color: var(--color-text-main);
+
+}
+.Acordeon-p{
+    font-family: var(--font-main);
+    font-size: var(--font-size-cuerpo);
+    color: var(--color-text-secondary);
+}
+.Acordeon-ul{
+    padding: 1rem;
+}
+.Acordeon-li{
+   list-style: circle;
+}
+.Acordeon-img {
+    width: 100%;
+    height: 5rem;
+    overflow: hidden;    
+}
+.Acordeon-imagen{ 
+    width: 100%;
+    height: 100%;
+    animation: mover 10s ease-in alternate .4s infinite;   
+}
+/* Animacion de la imagen en la seccion principal del acordeon la use tambien en el inicio de la pag en Inicio-article
+Movimiento del elemento comenzando en el 80% hace recorrido en TranslateX -80% , se rota 90deg y vuelve al origen infinitamente*/
+@keyframes mover {
+    0%{
+        transform: translateX(0%);
+    }
+    50%{
+        transform: translateX(-80%);
+    }
+    75%{ transform: translateX(0%);
+         transform: rotate(90deg);
+    }
+    100%{
+        transform: translateX(80%);
+    }
+    
+}
+
+.Lection-footer{
+    width: 100%; 
+    padding: 2rem 4rem;
+}
+.Lection-a{
+    width: 100%;
+    max-width: 9.375rem;
+    font-size: inherit;   
+    font-weight: bold;
+    color: blue;
+    opacity: .6;
+    transition: opacity .5s ease;
+}
+.Lection-a:hover{
+   opacity: 1;
+}
+.Lection-a:active{
+    color:lightgray;
+}
+
+
+/*-------Lection------ */
+
+
+/* -------Contacto------ */
+/* Descripción: Estilos para la seccion de Contacto  
+Estructura : 
+    - Contacto: estilos generales de la pagina principal de contacto
+    - Contacto-title: tipografica para el titulo de la pagina contacto
+    - Contacto-Section: estilo para contendor de formulario
+    - Contacto-container: Contenedor principal de pagina contacto
+    - Contacto-wrapper: definiciones basicas para el contenido de la pagina
+    - Contacto-h3: estilos para titulo de contactame
+    - Contacto-article: estilo para contenedor que abarca foto y detalle de pagina
+    - Contacto-p:estilos para articulo definido en contendor contactame
+    - Contacto-img: estilo para definir caracteristicas de la foto
+    - Contacto-foto: contendor que presentara la foto del usuario
+    - Contacto-info: estilo de contenedor independiente dentro de la pagina para definir informacion del contacto
+    - Contacto-h4: detalle de informacion de contacto
+    - Contacto-redes: contendor que presenta todos los link de las redes sociales
+    - Contacto-h5: tipografia del contenedor del formulario
+    - Contacto-form: estilo del formulario de contacto
+    - Contacto-button: estilo del boton submit
+    - Contacto-textarea: estilo del contenedor de comentarios
+    - Contacto-input: estilo del campo de nombre, email y telefono
+    - Contacto-label: estilo para las etiqueta de los campos del formulario
+*/
+
+
+.Contacto{
+    width: 100%;
+    min-height: 100vh;
+    
+    margin: 0 0 4rem; 
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: start;
+    gap: 1rem;
+}
+.Contacto-title{
+    width: 100%;
+    padding: 0 0 1rem; 
+    background-color: var(--color-accent-principal);
+    font-family: var(--font-title);
+    font-size: var(--font-size--titulos-h2);
+    font-weight: 600;
+    letter-spacing: .0938rem;
+    text-align: center;
+    color: var(--color-text-tertiary);
+}
+.Contacto-title::after{
+    content: " ";
+    display: block;
+    left: 0;
+    bottom: -100%;
+    height: .125rem;
+    background: #f1f1f1;
+}
+.Contacto-container{
+    width: 100%;
+    background-color: var(--color-bg-main);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+.Contacto-wrapper{
+    width: 100%;
+   
+    padding: 2rem 5rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: start;
+    gap: 5rem;
+}
+.Contacto-article{
+    width: 100%;
+   
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: start;
+    gap: .5rem;
+}
+.Contacto-h3{
+    width: 100%; 
+    font-family: var(--font-main);
+    font-size: var(--font-size--titulos-h3);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+ }
+.Contacto-p{
+    width: 100%;
+    font-family: var(--font-main) ;
+    font-size: var(--font-size-cuerpo);
+    font-weight: 500;
+    color: var(--color-text-secondary);}
+
+.Contacto-foto{
+    width: 100%;
+    height: 15rem;
+    background-color: #000000; 
+}
+.Contacto-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.Contacto-info{
+    width: 100%;
+}
+.Contacto-h4{
+    
+    font-family: var(--font-main);
+    font-size: var(--font-size--titulos-h4);
+    font-weight: 500;
+    color: var(--color-text-main);
+}
+
+
+/* Segunda parte contacto-form */
+.Contacto-section{
+    width: 100%;
+    padding: 3rem;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+    gap: .625rem;
+}
+.Contacto-h5{
+    width: 100%;
+    font-family: var(--font-main);
+    font-size: var(--font-size--titulos-h5);
+    font-weight: 700;
+    color: var(--color-accent-principal);
+    text-align: center;
+}
+
+.Contacto-form{
+    width: 100%;
+    max-width: 30rem;
+    padding: 1rem;
+    box-shadow: inset 0 -.1em 1.5em var(--color-accent-principal),
+    0 0 0 .1em var(--color-bg-alt),
+    0.3em 0.3em .5em var(--color-accent-cream);
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: start;
+    gap: .5rem;
+}
+.Contacto-label{
+    width: 100%;
+    font-family: var(--font-main);
+    font-size: var(--font-size-cuerpo);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+.Contacto-input{
+    width: 100%;  
+    padding: .625rem;  
+    border-radius: .3125rem;
+    border: .5px solid var(--color-accent-principal);
+    font-family: var(--font-family-cuerpo);
+    transition: background-color .5s ease;
+}
+
+.Contacto-input:hover{
+    background-color: var(--color-bg-secondary);
+}
+.Contacto-input:active{
+    background-color: var(--color-bg-alt);
+}
+.Contacto-textarea{
+    width: 100%;
+    padding: .5rem;
+    border-radius: .3125rem;
+    border: 1px solid var(--color-text-secondary);
+    transition: background-color .5s ease-in;
+    
+}
+.Contacto-textarea:hover{
+    background-color: var(--color-bg-secondary);
+}
+.Contacto-input:active{
+    background-color: var(--color-bg-alt);
+}
+.Contacto-button{
+    width: 100%;
+    max-width: 8rem;
+    padding: .5rem 1rem;
+    border: 1px solid var(--color-accent-principal);
+    border-radius: .3125rem;
+    background-color: var(--color-accent-principal);
+    font-family: var(--font-main);
+    font-size: var(--font-size-cuerpo);
+    font-weight: bold;
+    color: var(--color-bg-alt);
+    cursor: pointer;
+    transition: background-color .5s ease-in-out, color .5s ease-in-out, transform .5s ease-in-out;
+}
+.Contacto-button:hover{
+    background-color: var(--color-bg-alt);
+    color: var(--color-accent-principal);
+}
+.Contacto-button:active{
+    transform: scale(1.1);
+}
+
+/* -------Contacto------ */
+
+
+/* -------Footer------ */
+/* Descripción: Estilos para el footer de las paginas  
+Estructura : 
+    - Footer: seccion de pie de pagina 
+    - Footer-container: contenedor de pie de pagina
+    - Footer-h: estilo y tipografica de secciones dentro del pie de pagina
+    - Footer-p: estilos para parrafos dentro del pie de pagina
+    - Footer-article: contedor para los enlaces de redes sociales
+    - Footer-nav: contenedor de navegacion de los link de redes sociales
+    - Footer-form: contendor de formulario de subcripcion
+    - Footer-input: estilo de campo de correo de subcripcion
+    - Footer-button: estilo de boton para subcripcion
+    - Footer-copy: seccion de copyright
+    - Footer-text: texto de copyright
+*/
+ 
+/* Estilos y orden de display del footer y las secciones internas*/
+.Footer {
+    width: 100%;
+    max-width: 100vw;  
+  }
+  
+  .Footer-container {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--color-accent-principal); 
+    color: var(--color-text-tertiary);
+
+    display: flex;
+    flex-flow:row nowrap;
+    justify-content: center;
+    align-items: start;
+    gap: 5rem;
+  }
+
+  .Footer-h {
+    width: 100%;
+    margin: 0 0 .5rem;
+    padding: 0 0 .3rem;
+    font-family: var(--font-main), sans-serif;
+    font-size: var(--font-size--titulos-h4);
+    font-weight: 400;
+    text-align: center;
+    border-bottom: 1px solid #f1f1f1;
+     
+  }
+  .Footer-svg{
+    
+    fill: var(--color-text-tertiary);
+    
+  }
+
+  .Footer-p{
+    width:15.625rem;
+  }
+  .Footer-article , .Footer-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: .3125rem;
+  }
+  .Footer-li{
+    color: var( --color-text-tertiary);
+    opacity: .8;
+    transition: opacity .3s ease-in-out;
+  }
+    .Footer-li:hover{
+        opacity: 1;
+    }
+    .Footer-li:active{
+        opacity: .5;
+    }
+
+
+/* -------Redes------ */
+/* Descripción: Estilos para el campo de redes sociales de las paginas  
+Estructura : 
+    - Redes-ul: Seccion para las redes sociales
+    - Redes-li: estilo de la lista de redes sociales
+    - Redes-svg: imagenes de las redes sociales usadas
+*/   
+.Redes-ul {
+    display: flex;
+    flex-flow: row  nowrap;
+    justify-content: center;
+    align-items: start;
+    gap: .625rem;
+  }
+  
+  .Redes-li {
+    width: 2rem;
+    height: 2rem;
+  }
+  .Redes-svg{
+    width: 100%;
+    height: 100%;
+    fill: var(--color-text-tertiary);
+    opacity: .8;
+    transition: opacity .3s ease, fill .2s ease;
+  }
+  .Redes-svg:hover{
+    opacity: 1;
+  }
+    .Redes-svg:active{
+        fill: var(--color-accent-cream);
+    }
+  /* -------Redes------ */
+
+  .Footer-form {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  
+  .Footer-input {
+    width: 100%;  
+    padding: .625rem;  
+    border: 1px solid var(--color-text-tertiary);
+    border-radius: .3125rem;
+    font-family: 'Raleway', sans-serif;
+    color: var(--color-bg-alt);
+  }
+  
+  .Footer-button {
+    padding: .625rem .9375rem;
+    background-color: var(--color-bg-alt);
+    font-family: var(--font-family-cuerpo);
+    font-weight: bold;
+    color:  var(--color-accent-principal);
+    opacity: .9;
+    cursor: pointer;
+    transition: opacity .5s ease-in-out, transform .5s ease-in-out;
+  }
+  
+  .Footer-button:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+  .Footer-button:active{
+    transform: scale(.9);
+  }
+  
+  .Footer-copy {
+    width: 100%;
+    background-color: var(--color-bg-main);
+    color: var(--color-text-secondary);
+    font-size: var(--font-family-cuerpo);
+    text-align: center;
+  }
+  
+  
+@media(max-width:1100px){
+    
+    .Footer-container{
+        padding: 2rem ;
+        flex-wrap: wrap;
+        
+        gap: 2rem; 
+    }
+   
+    .Footer-copy{
+        font-size: 0.75em;
+    }
+  
+}
+
+/* -------Footer------ */
+
+@media(max-width:500px){
+    .Header{
+        padding: 0 ;
+    }
+    .Header-boton{
+        right: 0;
+    }
+    .Header-ul.is-active{
+        transform: translateX(50%);}
+    .Footer{
+            width: 100%;
+    }
+}
